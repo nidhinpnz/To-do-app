@@ -8,6 +8,13 @@ click.addEventListener("click",event=>{
     const addtask= task.value.trim();
     if(addtask!==""){
         const taskItem = document.createElement("li");
+        const checkbox = document.createElement("input");
+
+        checkbox.type="checkbox";
+        checkbox.style.marginRight="10px";
+        checkbox.style.transform = "scale(1.5)"; 
+        checkbox.style.verticalAlign = "middle";  
+
         taskItem.innerText = addtask;
 
         const deleteButton= document.createElement("button");
@@ -19,9 +26,22 @@ click.addEventListener("click",event=>{
             
             
         });
+        checkbox.addEventListener("change", event=>{
+                if(checkbox.checked){
+                    taskItem.style.textDecoration="line-through";
+                    taskItem.style.color=" beige";
+                }
+                else{
+                    taskItem.style.textDecoration="none";
+                    taskItem.style.color="white";
+                }
+        });
+        
     taskItem.appendChild(deleteButton);
+     taskItem.appendChild(checkbox);
         list.appendChild(taskItem);
-    
+      
+     
         
         task.value="";
     }
